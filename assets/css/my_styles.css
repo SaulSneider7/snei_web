@@ -41,3 +41,59 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+
+.reveal .reveal-item {
+  opacity: 0;
+  transform: translateY(40px) scale(0.92);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active .reveal-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* delays */
+.delay-150 {
+  transition-delay: 0.15s;
+}
+
+.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.delay-500 {
+  transition-delay: 0.5s;
+}
+
+
+.device-card {
+  transition:
+    transform 0.45s cubic-bezier(.4, 0, .2, 1),
+    opacity 0.35s ease,
+    filter 0.35s ease,
+    box-shadow 0.35s ease,
+    z-index 0.2s;
+  will-change: transform;
+}
+
+/* Hover focus */
+.device-card:hover {
+  transform: translateY(-22px) scale(1.04);
+  z-index: 60;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+}
+
+/* Otros dispositivos pierden protagonismo */
+.relative:hover .device-card:not(:hover) {
+  opacity: 0.45;
+  filter: blur(2px);
+  transform: translateY(10px) scale(0.96);
+}
+
+
+.device-card:hover {
+  transform: translateY(-22px) scale(1.04) rotate(-1deg);
+}

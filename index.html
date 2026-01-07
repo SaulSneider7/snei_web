@@ -172,100 +172,126 @@
 
           <div class="text-sm font-medium text-purple-200">
             Termina el <br />
-            <span class="text-white font-bold">1 de Enero 2026</span>
+            <span id="countdown-date" class="text-white font-bold"></span>
           </div>
         </div>
       </div>
 
       <!-- Hero Section -->
-      <section class="relative pt-20 pb-32 overflow-hidden">
-        <div
-          class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[100px] animate-float"
-        ></div>
-        <div
-          class="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-[100px] animate-float"
-          style="animation-delay: 2s"
-        ></div>
-
-        <div
-          class="max-w-6xl mx-auto px-4 relative z-10 flex flex-col items-center text-center reveal"
-        >
-          <!-- New Eye-Catching Price Badge -->
-          <div
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-900/90 to-blue-900/90 border-2 border-purple-500/50 text-sm md:text-base text-white mb-8 shadow-[0_0_40px_rgba(168,85,247,0.5)] hover:scale-105 transition-transform cursor-default animate-pulse-slow"
-          >
+      <!-- HERO SECTION -->
+      <section
+        class="relative min-h-screen flex items-center bg-gradient-to-br from-black via-[#0b0614] to-purple-950 overflow-hidden">
+      
+        <!-- Glow decorativo -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(168,85,247,0.25),transparent_60%)]"></div>
+      
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      
+          <!-- LEFT CONTENT -->
+          <div class="reveal">
             <span
-              class="bg-green-500 text-black text-xs font-bold px-2 py-0.5 rounded-full uppercase"
-              >¡Hoy!</span
-            >
-            <span class="font-bold tracking-wide"
-              >TEN TU WEB PROPIA DESDE
-              <span class="text-green-400 text-xl font-black drop-shadow-md"
-                >S/ 250</span
-              ></span
-            >
-          </div>
-
-          <h1
-            class="text-5xl md:text-7xl font-display font-bold tracking-tight mb-6"
-          >
-            <span class="block text-white">Tu Empresa Merece</span>
-            <span
-              class="bg-gradient-to-r from-neon-cyan via-purple-400 to-neon-purple bg-clip-text text-transparent"
-            >
-              Dominar el Mercado Digital
+              class="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full border border-purple-500/20 text-sm font-bold mb-6">
+              <i data-lucide="zap" class="w-4"></i>
+              PROMOCIÓN ACTIVA – 50% OFF
             </span>
-          </h1>
-
-          <p
-            class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed"
-          >
-            Somos <span class="text-white font-bold">Snei Web</span>, una
-            agencia especializada en crear experiencias digitales que venden. No
-            dejes que tu negocio sea invisible en internet. Transformamos
-            visitantes en clientes.
-          </p>
-
-          <div
-            class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center"
-          >
-            <a
-              href="https://wa.me/51917794918?text=Hola%20Agencia%20Snei%20Web,%20quiero%20mi%20asesor%C3%ADa%20GRATIS%20y%20aprovechar%20el%2050%25%20de%20descuento."
-              target="_blank"
-              class="group relative inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transform hover:-translate-y-1 w-full sm:w-auto"
-            >
-              SOLICITAR ASESORÍA GRATIS
-              <i
-                data-lucide="arrow-right"
-                class="group-hover:translate-x-1 transition-transform"
-              ></i>
-            </a>
-            <a
-              href="#promo"
-              class="px-8 py-4 rounded-xl font-medium text-white border border-white/20 hover:bg-white/5 transition-all w-full sm:w-auto"
-            >
-              Ver Planes desde S/250
-            </a>
-          </div>
-
-          <div
-            class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500"
-          >
-            <div class="flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="text-green-500 w-4"></i>
-              Equipo de Expertos
+      
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-white leading-tight mb-6">
+              Páginas web profesionales
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                desde S/ 250
+              </span>
+            </h1>
+      
+            <p class="text-gray-400 text-lg mb-8 max-w-xl">
+              Aprovecha nuestra promoción por tiempo limitado.
+              ¿Te ofrecieron algo en otro lado?
+              <strong class="text-white">Nosotros mejoramos esa oferta</strong>
+              con más valor y mejor soporte.
+            </p>
+      
+            <!-- CTA -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://wa.me/51917794918?text=Hola,%20quiero%20una%20página%20web%20desde%20S/250" target="_blank"
+                class="inline-flex items-center justify-center gap-3 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-purple-600/30 hover:-translate-y-1">
+                <i data-lucide="rocket"></i>
+                Cotizar ahora
+              </a>
+      
+              <a href="https://wa.me/51917794918?text=Hola,%20tengo%20una%20cotización%20de%20otra%20agencia" target="_blank"
+                class="inline-flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg border border-white/10 transition-all">
+                <i data-lucide="refresh-ccw"></i>
+                Mejorar mi oferta
+              </a>
             </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="text-green-500 w-4"></i>
-              Hosting Gratis 1er Año
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="text-green-500 w-4"></i>
-              Código Optimizado
+      
+            <!-- Trust badges -->
+            <div class="mt-10 flex flex-wrap gap-6 text-sm text-gray-500">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle" class="text-purple-400 w-4"></i>
+                Diseño profesional
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="clock" class="text-purple-400 w-4"></i>
+                Entrega rápida
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="text-purple-400 w-4"></i>
+                Sin costos ocultos
+              </div>
             </div>
           </div>
+      
+          <!-- RIGHT VISUAL -->
+          <!-- RIGHT DEVICES -->
+          <!-- RIGHT DEVICES (IMPROVED) -->
+          <div class="relative hidden md:block reveal">
+          
+            <!-- Glow -->
+            <div class="absolute -inset-12 bg-gradient-to-tr from-purple-600/20 to-indigo-500/20 blur-3xl rounded-full"></div>
+          
+            <div class="relative w-[34rem] h-[30rem] mx-auto">
+          
+              <!-- Browser (MAIN) -->
+              <div class="device-card absolute top-8 left-1/2 -translate-x-1/2 w-[30rem]
+                       bg-black/70 border border-white/10 rounded-2xl shadow-2xl backdrop-blur-xl
+                       z-40 reveal-item">
+                <div class="flex items-center gap-2 px-4 py-2 border-b border-white/10">
+                  <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                  <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                  <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                </div>
+                <img src="assets/img/browser.png" class="rounded-b-2xl" alt="Vista escritorio" />
+              </div>
+          
+              <!-- Tablet -->
+              <div class="device-card absolute top-24 left-2 w-[18rem]
+                       bg-black/70 border border-white/10 rounded-xl shadow-xl backdrop-blur-xl
+                       z-30 reveal-item delay-150">
+                <img src="assets/img/tablet.png" class="rounded-xl" alt="Vista tablet" />
+              </div>
+          
+              <!-- Vertical Tablet -->
+              <div class="device-card absolute top-28 right-4 w-[14rem]
+                       bg-black/70 border border-white/10 rounded-xl shadow-lg backdrop-blur-xl
+                       z-20 reveal-item delay-300">
+                <img src="assets/img/tablet_vertical.png" class="rounded-xl" alt="Vista vertical" />
+              </div>
+          
+              <!-- Mobile -->
+              <div class="device-card absolute bottom-2 right-24 w-[8.5rem]
+                       bg-black/70 border border-white/10 rounded-xl shadow-md backdrop-blur-xl
+                       z-10 reveal-item delay-500">
+                <img src="assets/img/mobile.png" class="rounded-xl" alt="Vista móvil" />
+              </div>
+          
+            </div>
+          </div>
+
+
+      
         </div>
       </section>
+
 
       <!-- Problem / Solution Section -->
       <section
@@ -833,6 +859,64 @@
           </div>
         </div>
       </section>
+
+
+      <!-- Better Offer Section -->
+      <section class="py-20 bg-gradient-to-r from-purple-900/20 via-black to-indigo-900/20 border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-4 text-center reveal">
+      
+          <div
+            class="inline-flex items-center gap-2 bg-green-500/10 text-green-400 px-4 py-2 rounded-full mb-6 border border-green-500/20">
+            <i data-lucide="trending-up" class="w-4"></i>
+            <span class="font-bold tracking-wide text-sm">GARANTÍA DE MEJOR OFERTA</span>
+          </div>
+      
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+            ¿Te ofrecieron algo mejor?
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
+              Nosotros lo mejoramos
+            </span>
+          </h2>
+      
+          <p class="text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+            Si ya tienes una cotización o propuesta de otra agencia, envíanos el
+            documento por WhatsApp. Analizamos la oferta y te entregamos una
+            <strong class="text-white">mejor solución</strong>: más beneficios,
+            mejor soporte y mayor calidad, sin letra pequeña.
+          </p>
+      
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://wa.me/51917794918?text=Hola,%20tengo%20una%20cotización%20de%20otra%20agencia%20y%20quiero%20que%20me%20mejoren%20la%20oferta."
+              target="_blank"
+              class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-500/30 hover:-translate-y-1">
+              <i data-lucide="file-check"></i>
+              Enviar Cotización
+            </a>
+      
+            <span class="text-xs text-gray-500">
+              *Aplican condiciones según alcance del proyecto
+            </span>
+          </div>
+      
+          <!-- Trust Points -->
+          <div class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-gray-500">
+            <div class="flex items-center gap-2">
+              <i data-lucide="shield-check" class="text-green-500 w-4"></i>
+              Sin costos ocultos
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="award" class="text-green-500 w-4"></i>
+              Calidad profesional
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="headphones" class="text-green-500 w-4"></i>
+              Soporte real post-entrega
+            </div>
+          </div>
+      
+        </div>
+      </section>
+
 
       <!-- FAQ Section -->
       <section class="py-20 bg-black/50">

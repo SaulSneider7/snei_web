@@ -1,94 +1,152 @@
-// 1. Initialize Icons
+/* ===============================
+   1. ICONS
+================================ */
 lucide.createIcons();
 
-// 2. Countdown Logic
-const TARGET_DATE = new Date("2026-01-01T00:00:00").getTime();
+/* ===============================
+   2. COUNTDOWN CONFIG
+================================ */
+const COUNTDOWN_DATE = "2026-01-30T00:00:00-05:00"; // YYYY-MM-DDTHH:mm:ss
+const TARGET_TIME = new Date(COUNTDOWN_DATE).getTime();
+
+const $days = document.getElementById("days");
+const $hours = document.getElementById("hours");
+const $minutes = document.getElementById("minutes");
+const $seconds = document.getElementById("seconds");
+
+const format = (value) => String(value).padStart(2, "0");
+
+let countdownTimer = null;
+
+
+const $countdownDateText = document.getElementById("countdown-date");
+
+function renderCountdownDate() {
+  const date = new Date(COUNTDOWN_DATE);
+
+  const formatter = new Intl.DateTimeFormat("es-PE", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  // Ejemplo: "1 de enero de 2026"
+  const formattedDate = formatter.format(date);
+
+  // Capitalizar mes (mejor presentación)
+  $countdownDateText.textContent =
+    formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+}
+
+renderCountdownDate();
+
 
 function updateCountdown() {
-  const now = new Date().getTime();
-  const difference = TARGET_DATE - now;
+  const now = Date.now();
+  const diff = TARGET_TIME - now;
 
-  if (difference > 0) {
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((difference / 1000 / 60) % 60);
-    const seconds = Math.floor((difference / 1000) % 60);
-
-    document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-    document.getElementById("hours").innerText =
-      hours < 10 ? "0" + hours : hours;
-    document.getElementById("minutes").innerText =
-      minutes < 10 ? "0" + minutes : minutes;
-    document.getElementById("seconds").innerText =
-      seconds < 10 ? "0" + seconds : seconds;
+  if (diff <= 0) {
+    stopCountdown();
+    setZero();
+    onCountdownFinish();
+    return;
   }
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
 
-// 3. FAQ Logic (Accordion)
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff / 3600000) % 24);
+  const minutes = Math.floor((diff / 60000) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  $days.textContent = format(days);
+  $hours.textContent = format(hours);
+  $minutes.textContent = format(minutes);
+  $seconds.textContent = format(seconds);
+}
+
+function startCountdown() {
+  updateCountdown();
+  countdownTimer = setInterval(updateCountdown, 1000);
+}
+
+function stopCountdown() {
+  if (countdownTimer) clearInterval(countdownTimer);
+}
+
+function setZero() {
+  [$days, $hours, $minutes, $seconds].forEach(
+    (el) => (el.textContent = "00")
+  );
+}
+
+function onCountdownFinish() {
+  console.log("⏰ Countdown finalizado");
+  // Aquí puedes:
+  // - Mostrar mensaje
+  // - Activar CTA
+  // - Cambiar texto
+  // - Lanzar animación
+}
+
+startCountdown();
+
+/* ===============================
+   3. FAQ ACCORDION
+================================ */
 document.querySelectorAll(".faq-btn").forEach((button) => {
   button.addEventListener("click", () => {
     const content = button.nextElementSibling;
     const parent = button.parentElement;
     const icon = button.querySelector(".icon-plus");
 
-    // Toggle active state
-    if (content.style.maxHeight && content.style.maxHeight !== "0px") {
-      content.style.maxHeight = "0px";
-      content.style.opacity = "0";
-      parent.classList.remove("bg-white/5");
-      parent.classList.add("bg-transparent");
-      if (icon) {
-        icon.setAttribute("data-lucide", "plus");
-        icon.classList.remove("text-purple-400");
-        icon.classList.add("text-gray-400");
-      }
-    } else {
-      // Close others (Optional, usually better UX)
-      document.querySelectorAll(".faq-content").forEach((el) => {
-        el.style.maxHeight = "0px";
-        el.style.opacity = "0";
-        el.parentElement.classList.remove("bg-white/5");
-        el.parentElement.classList.add("bg-transparent");
-        const otherIcon = el.parentElement.querySelector(".icon-plus");
-        if (otherIcon) {
-          otherIcon.setAttribute("data-lucide", "plus");
-          otherIcon.classList.remove("text-purple-400");
-          otherIcon.classList.add("text-gray-400");
-        }
-      });
+    const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
 
+    document.querySelectorAll(".faq-content").forEach((el) => {
+      el.style.maxHeight = "0px";
+      el.style.opacity = "0";
+      el.parentElement.classList.remove("bg-white/5");
+      el.parentElement.classList.add("bg-transparent");
+
+      const i = el.parentElement.querySelector(".icon-plus");
+      if (i) {
+        i.setAttribute("data-lucide", "plus");
+        i.classList.remove("text-purple-400");
+        i.classList.add("text-gray-400");
+      }
+    });
+
+    if (!isOpen) {
       content.style.maxHeight = content.scrollHeight + "px";
       content.style.opacity = "1";
-      parent.classList.remove("bg-transparent");
       parent.classList.add("bg-white/5");
+      parent.classList.remove("bg-transparent");
+
       if (icon) {
-        // We just keep the plus but maybe rotate it or change color
-        icon.classList.remove("text-gray-400");
-        icon.classList.add("text-purple-400");
         icon.setAttribute("data-lucide", "minus");
+        icon.classList.add("text-purple-400");
+        icon.classList.remove("text-gray-400");
       }
     }
-    lucide.createIcons(); // Re-render icons after DOM change
+
+    lucide.createIcons();
   });
 });
 
-// 4. Scroll Animation (Intersection Observer)
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
+/* ===============================
+   4. SCROLL ANIMATIONS
+================================ */
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  }
+);
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-      observer.unobserve(entry.target); // Only animate once
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll(".reveal").forEach((el) => {
-  observer.observe(el);
-});
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));

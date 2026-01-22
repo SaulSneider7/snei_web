@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Corporación VGR",
+    "description": "Página web corporativa para servicios audiovisuales profesionales enfocada en confianza y conversión.",
+    "image": "./assets/img/portfolio/corporacionvgr.webp",
+    "link": "https://corporacionvgr.com",
+    "badge": "Web Corporativa",
+    "tags": ["Servicios", "Diseño Profesional", "Empresas"]
+  },
+  {
+    "title": "Titan Barber",
+    "description": "Web elegante para barbería premium con catálogo de cortes y precios.",
+    "image": "./assets/img/portfolio/corporacionvgr.webp",
+    "link": null,
+    "badge": "Negocio Local",
+    "tags": ["Catálogo", "Diseño Masculino"]
+  },
+  {
+    "title": "Voz & Arte",
+    "description": "Plataforma web para escuela de música con servicios, talleres y promociones.",
+    "image": "./assets/img/portfolio/voz-y-arte.webp",
+    "link": "https://voz-y-arte.netlify.app/",
+    "badge": "Educación",
+    "tags": ["Landing", "Promociones"]
+  },
+  {
+    "title": "MR Brevetes",
+    "description": "Plataforma informativa para obtener brevetes de forma rápida, segura y legal.",
+    "image": "./assets/img/portfolio/mr_brevetes.webp",
+    "link": "https://tu-sitioweb.com/portfolio/mr_brevetes/",
+    "badge": "Servicios",
+    "tags": ["Conversión", "SEO"]
+  },
+  {
+    "title": "Robótica Kids – SENATI",
+    "description": "Panel web para padres con accesos centralizados a clases, grabaciones y soporte.",
+    "image": "./assets/img/portfolio/CoderZ.webp",
+    "link": "https://tu-sitioweb.com/portfolio/Robotica_Kids_con_CoderZ/",
+    "badge": "Educación",
+    "tags": ["Panel Web", "UX"]
+  },
+  {
+    "title": "Flow 21",
+    "description": "Página web para sello discográfico independiente con servicios, playlists y lanzamientos.",
+    "image": "./assets/img/portfolio/flow-21.webp",
+    "link": "https://flow-21.netlify.app/",
+    "badge": "Música",
+    "tags": ["Marca Artística", "Multimedia"]
+  },
+  {
+    "title": "Alexander Flow",
+    "description": "Portafolio personal con diseño juvenil enfocado en identidad y proyección artística.",
+    "image": "./assets/img/portfolio/alexander-flow.webp",
+    "link": "https://alexanderflow.netlify.app/",
+    "badge": "Portafolio",
+    "tags": ["Marca Personal", "Diseño Juvenil"]
+  }
+]

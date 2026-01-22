@@ -97,3 +97,37 @@ body {
 .device-card:hover {
   transform: translateY(-22px) scale(1.04) rotate(-1deg);
 }
+
+
+
+
+.tag {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+article:hover {
+  transform-style: preserve-3d;
+}
+
+
+/* Navbar */
+.nav-link {
+  @apply text-gray-300 hover:text-white transition-colors relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-500 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link-mobile {
+  @apply text-gray-300 hover:text-white transition-colors py-2;
+}

@@ -124,4 +124,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ===============================
+     ENVIAR CORREO
+  ================================ */
+  const form = document.getElementById('contactForm');
+  const responseBox = document.getElementById('form-response');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    responseBox.classList.add('hidden');
+    responseBox.innerHTML = '';
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('/enviar_correo.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      responseBox.classList.remove('hidden');
+
+      if (data.success) {
+        responseBox.className = 'mb-4 text-sm text-green-400 bg-green-400/10 p-3 rounded-lg text-center';
+        responseBox.innerText = data.message;
+        form.reset();
+      } else {
+        responseBox.className = 'mb-4 text-sm text-red-400 bg-red-400/10 p-3 rounded-lg text-center';
+        responseBox.innerText = data.message;
+      }
+
+    } catch (error) {
+      responseBox.classList.remove('hidden');
+      responseBox.className = 'mb-4 text-sm text-red-400 bg-red-400/10 p-3 rounded-lg text-center';
+      responseBox.innerText = 'Tenemos problemas técnicos en este momento. Inténtalo más tarde. Frontend error.';
+    }
+  });
 });
+
+

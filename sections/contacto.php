@@ -10,8 +10,9 @@
             Cuéntanos brevemente tu proyecto. Te responderemos en menos de 24 horas con una propuesta clara.
         </p>
 
-        <form class="glass-panel p-8 rounded-2xl max-w-2xl mx-auto text-left" action="/procesar-contacto.php"
-            method="post" autocomplete="on">
+        <form id="contactForm" class="glass-panel p-8 rounded-2xl max-w-2xl mx-auto text-left" method="post"
+            autocomplete="on">
+
 
             <!-- Honeypot anti-spam -->
             <input type="text" name="empresa" tabindex="-1" autocomplete="off" class="hidden">
@@ -52,6 +53,9 @@
                     placeholder="Ej. Página web corporativa, tienda online, mejora de diseño, mantenimiento..."
                     class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"></textarea>
             </div>
+
+            <!-- Contenedor de respuesta -->
+            <div id="form-response" class="hidden mb-4 text-sm font-medium text-center rounded-lg p-3"></div>
 
             <button type="submit"
                 class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-lg shadow-purple-600/30 hover:shadow-purple-600/50">

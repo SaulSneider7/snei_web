@@ -51,9 +51,6 @@ define('BASE_PATH', __DIR__);
     <!-- WhatsApp Floating Button -->
     <?php require_once BASE_PATH . '/partials/whatsapp_button.php'; ?>
 
-    <!-- Configuracion de tailwind -->
-    <script src="./assets/js/config_tailwind.js"></script>
-
     <!-- Application Logic -->
     <script  src="./assets/js/script.js"></script>
 </body>

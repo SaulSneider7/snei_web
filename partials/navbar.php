@@ -38,7 +38,7 @@
             <li><a href="#promo" class="block hover:text-purple-400">Servicios</a></li>
             <li><a href="#mejor-oferta" class="block hover:text-purple-400">Mejoramos tu propuesta</a></li>
             <li><a href="#demo" class="hover:text-purple-400 transition">Demo Gratis</a></li>
-            <li><a href="#portafolio" class="block hover:text-purple-400">Portafolio</a></li>
+            <li><a href="./portfolio.php" class="hover:text-purple-400 transition">Portafolio</a></li>
             <li><a href="#contacto" class="block hover:text-purple-400">Contacto</a></li>
 
             <a href="#demo"

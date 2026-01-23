@@ -9,8 +9,10 @@ require './PHPMailer/Exception.php';
 require './PHPMailer/PHPMailer.php';
 require './PHPMailer/SMTP.php';
 
-// Honeypot
-if (!empty($_POST['empresa'])) {
+/* ===============================
+   ANTI-SPAM (HONEYPOT)
+================================ */
+if (!empty($_POST['empresa'] ?? '')) {
     echo json_encode([
         'success' => false,
         'message' => 'Error de validación.'
@@ -18,20 +20,47 @@ if (!empty($_POST['empresa'])) {
     exit;
 }
 
-// Sanitizar datos
+/* ===============================
+   DATOS
+================================ */
+$tipo     = $_POST['tipo'] ?? 'contacto';
 $nombre   = trim(strip_tags($_POST['nombre'] ?? ''));
 $email    = trim(filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL));
 $telefono = trim(strip_tags($_POST['telefono'] ?? ''));
-$mensaje  = trim(strip_tags($_POST['mensaje'] ?? ''));
+$mensaje  = trim(strip_tags($_POST['mensaje'] ?? ($_POST['idea'] ?? '')));
 
 
-// Validaciones básicas
-if ($nombre === '' || $email === '' || $mensaje === '') {
+/* ===============================
+   VALIDACIONES
+================================ */
+
+// Mensaje obligatorio siempre
+if ($mensaje === '') {
     echo json_encode([
         'success' => false,
-        'message' => 'Completa todos los campos obligatorios.'
+        'message' => 'Debes describir tu solicitud.'
     ]);
     exit;
+}
+
+if ($tipo === 'contacto') {
+    if ($nombre === '' || $email === '') {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Nombre y correo son obligatorios.'
+        ]);
+        exit;
+    }
+}
+
+if ($tipo === 'demo') {
+    if ($email === '' && $telefono === '') {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Ingresa al menos un medio de contacto.'
+        ]);
+        exit;
+    }
 }
 
 // Validar email
@@ -44,7 +73,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 
-
+/* ===============================
+   ENVÍO DE CORREO
+================================ */
 
 $mail = new PHPMailer(true);
 
@@ -56,19 +87,24 @@ try {
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'contacto@tu-sitioweb.com';             //SMTP username
     $mail->Password   = 'ynYMcr=_(XAo';                         //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
     $mail->setFrom('contacto@tu-sitioweb.com', 'Formulario Web');
     $mail->addAddress('contacto@tu-sitioweb.com');              //Add a recipient
     $mail->addAddress($email, $nombre);                     //Name is optional
-    //Reply To
-    $mail->addReplyTo($email, $nombre);
+    
+     if ($email) {
+        $mail->addReplyTo($email, $nombre ?: 'Usuario');
+    }
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Nuevo contacto desde el Sitio Web';
+    $mail->Subject = $tipo === 'demo'
+        ? 'Solicitud de DEMO GRATIS'
+        : 'Nuevo contacto desde el sitio web';
+
     $mail->Body = '
         <!DOCTYPE html>
         <html lang="es">
@@ -138,11 +174,14 @@ try {
     $mail->send();
     echo json_encode([
         'success' => true,
-        'message' => 'Mensaje enviado correctamente. Te contactaremos en menos de 24 horas.'
+        'message' => $tipo === 'demo'
+            ? 'Demo solicitada correctamente. Te contactaremos pronto.'
+            : 'Mensaje enviado correctamente. Te responderemos en menos de 24 horas.'
     ]);
+
 } catch (Exception $e) {
     echo json_encode([
         'success' => false,
-        'message' => 'Tenemos problemas técnicos en este momento. Inténtalo más tarde.' . $mail->ErrorInfo 
+        'message' => 'Estamos teniendo problemas, No eres t&uacute; soy yo. :c'
     ]);
 }

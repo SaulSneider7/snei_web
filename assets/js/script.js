@@ -125,16 +125,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ===============================
-     ENVIAR CORREO
+   ENVÍO DE FORMULARIOS (CONTACTO / DEMO)
   ================================ */
-  const form = document.getElementById('contactForm');
-  const responseBox = document.getElementById('form-response');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  async function enviarFormulario(form) {
+    const responseBox =
+      form.querySelector('.form-response') ||
+      document.getElementById('form-response');
+
+    if (!responseBox) {
+      console.error('No se encontró el contenedor de respuesta');
+      return;
+    }
 
     responseBox.classList.add('hidden');
-    responseBox.innerHTML = '';
+    responseBox.textContent = '';
 
     const formData = new FormData(form);
 
@@ -144,25 +149,55 @@ document.addEventListener("DOMContentLoaded", () => {
         body: formData
       });
 
+      // Si el servidor no responde JSON válido, esto fallará
       const data = await res.json();
 
       responseBox.classList.remove('hidden');
 
       if (data.success) {
-        responseBox.className = 'mb-4 text-sm text-green-400 bg-green-400/10 p-3 rounded-lg text-center';
-        responseBox.innerText = data.message;
+        responseBox.className =
+          'form-response mb-4 text-sm text-green-400 bg-green-400/10 p-3 rounded-lg text-center';
+        responseBox.textContent = data.message;
         form.reset();
       } else {
-        responseBox.className = 'mb-4 text-sm text-red-400 bg-red-400/10 p-3 rounded-lg text-center';
-        responseBox.innerText = data.message;
+        responseBox.className =
+          'form-response mb-4 text-sm text-red-400 bg-red-400/10 p-3 rounded-lg text-center';
+        responseBox.textContent = data.message;
       }
 
     } catch (error) {
+      console.error('Error al enviar formulario:', error);
+
       responseBox.classList.remove('hidden');
-      responseBox.className = 'mb-4 text-sm text-red-400 bg-red-400/10 p-3 rounded-lg text-center';
-      responseBox.innerText = 'Tenemos problemas técnicos en este momento. Inténtalo más tarde. Frontend error.';
+      responseBox.className =
+        'form-response mb-4 text-sm text-red-400 bg-red-400/10 p-3 rounded-lg text-center';
+      responseBox.textContent =
+        'Tenemos problemas técnicos en este momento. Inténtalo más tarde.';
     }
-  });
+  }
+
+  /* ===============================
+     EVENTOS
+  ================================ */
+
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        enviarFormulario(contactForm);
+      });
+    }
+
+    const demoForm = document.getElementById('demoForm');
+    if (demoForm) {
+      demoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        enviarFormulario(demoForm);
+      });
+    }
+
+
 });
 
 

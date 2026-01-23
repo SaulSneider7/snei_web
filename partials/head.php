@@ -27,7 +27,7 @@ $description = 'Agencia de diseño web en Lima. Páginas web desde S/250.';
         content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3" />
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
     <!-- Fonts -->
     <link
@@ -43,5 +43,8 @@ $description = 'Agencia de diseño web en Lima. Páginas web desde S/250.';
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/my_styles.css" />
+    <!-- tailwindcss -->
+    <link rel="stylesheet" href="./assets/css/output.css">
+    <!-- My styles -->
+    <link rel="stylesheet" href="./assets/css/my_styles.css" />
 </head>

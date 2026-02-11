@@ -12,13 +12,16 @@
             <span
                 class="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full border border-purple-500/20 text-sm font-bold mb-6">
                 <i data-lucide="zap" class="w-4"></i>
-                PROMOCIÓN ACTIVA – 50% OFF
+                <span id="hero-discount-text">
+                    PROMOCI&Oacute;N ACTIVA
+                    </span>
+
             </span>
 
             <h1 class="text-4xl md:text-6xl font-display font-bold text-white leading-tight mb-6">
                 Páginas web profesionales
                 <span class="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-                    desde S/ 250
+                    desde S/ <span id="hero-price">0</span>
                 </span>
             </h1>
 
@@ -65,7 +68,6 @@
 
         <!-- RIGHT VISUAL -->
         <!-- RIGHT DEVICES -->
-        <!-- RIGHT DEVICES (IMPROVED) -->
         <div class="relative hidden md:block reveal">
 
             <!-- Glow -->

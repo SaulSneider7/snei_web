@@ -26,8 +26,9 @@
                                     Web Propia</span>
                                 desde solo
                                 <span
-                                    class="text-white text-4xl font-black underline decoration-orange-500/50 decoration-4 underline-offset-4">S/
-                                    250</span>
+                                    class="text-white text-4xl font-black underline decoration-orange-500/50 decoration-4 underline-offset-4">
+                                    S/ <span id="promo-highlight-price">0</span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -40,7 +41,7 @@
                 <span class="font-bold tracking-wide text-sm">PRECIOS DE LOCURA</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-                Planes con 50% Descuento
+                Planes con <span id="promo-percent">0</span>% Descuento
             </h2>
             <p class="text-gray-400 max-w-2xl mx-auto">
                 Selecciona el paquete ideal para tu negocio. Precios
@@ -50,11 +51,10 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             <!-- Plan: Landing Page -->
-            <div
-                class="glass-panel p-8 rounded-3xl border-t-4 border-t-blue-500 flex flex-col price-card transition-all duration-300 reveal group relative">
-                <div
-                    class="absolute top-4 right-4 bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">
-                    -50% OFF
+            <div class="glass-panel p-8 rounded-3xl border-t-4 border-t-blue-500 flex flex-col price-card transition-all duration-300 reveal group relative"
+                data-plan="basic">
+                <div class="discount-badge absolute top-4 right-4 bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">
+                    <!-- se recupera de js -->
                 </div>
                 <h3 class="text-xl font-bold text-white mb-2">Landing Page</h3>
                 <p class="text-gray-400 text-sm mb-6">
@@ -62,16 +62,16 @@
                 </p>
 
                 <div class="mb-6">
-                    <div class="text-gray-500 line-through text-lg font-medium">
-                        S/ 500
+                    <div class="original-price text-gray-500 line-through text-lg font-medium">
+                        <!-- se recupera de js -->
                     </div>
                     <div class="flex items-baseline gap-1">
                         <span class="text-xl text-blue-400">S/</span>
-                        <span class="text-5xl font-bold text-white">250</span>
+                        <span class="final-price text-5xl font-bold text-white">250</span>
                     </div>
-                    <div class="text-xs text-green-400 font-bold mt-2">
+                    <!-- <div class="text-xs text-green-400 font-bold mt-2">
                         + Hosting Gratis 1 año
-                    </div>
+                    </div> -->
                 </div>
 
                 <ul class="space-y-4 mb-8 flex-1">
@@ -109,15 +109,14 @@
             </div>
 
             <!-- Plan: Sitio Web Estandar -->
-            <div
-                class="glass-panel p-8 rounded-3xl border-t-4 border-t-purple-500 flex flex-col price-card transition-all duration-300 transform scale-105 shadow-2xl z-10 reveal bg-[#0f0f0f] relative">
+            <div class="glass-panel p-8 rounded-3xl border-t-4 border-t-purple-500 flex flex-col price-card transition-all duration-300 transform scale-105 shadow-2xl z-10 reveal bg-[#0f0f0f] relative"
+                data-plan="standard">
                 <div
                     class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg">
                     MÁS POPULAR
                 </div>
-                <div
-                    class="absolute top-4 right-4 bg-purple-500/20 text-purple-400 text-xs font-bold px-3 py-1 rounded-full">
-                    -50% OFF
+                <div class="discount-badge absolute top-4 right-4 bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">
+                    <!-- se recupera de js -->
                 </div>
 
                 <h3 class="text-xl font-bold text-white mb-2">
@@ -128,16 +127,16 @@
                 </p>
 
                 <div class="mb-6">
-                    <div class="text-gray-500 line-through text-lg font-medium">
-                        S/ 800
+                    <div class="original-price text-gray-500 line-through text-lg font-medium">
+                        <!-- se recupera de js -->
                     </div>
                     <div class="flex items-baseline gap-1">
                         <span class="text-xl text-purple-400">S/</span>
-                        <span class="text-6xl font-bold text-white">400</span>
+                        <span class="final-price text-6xl font-bold text-white">400</span>
                     </div>
-                    <div class="text-xs text-green-400 font-bold mt-2">
+                    <!-- <div class="text-xs text-green-400 font-bold mt-2">
                         + Hosting Gratis 1 año
-                    </div>
+                    </div> -->
                 </div>
 
                 <ul class="space-y-4 mb-8 flex-1">
@@ -183,11 +182,10 @@
             </div>
 
             <!-- Plan: Corporativo -->
-            <div
-                class="glass-panel p-8 rounded-3xl border-t-4 border-t-yellow-500 flex flex-col price-card transition-all duration-300 reveal group relative">
-                <div
-                    class="absolute top-4 right-4 bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">
-                    -50% OFF
+            <div class="glass-panel p-8 rounded-3xl border-t-4 border-t-yellow-500 flex flex-col price-card transition-all duration-300 reveal group relative"
+                data-plan="corporate">
+                <div class="discount-badge absolute top-4 right-4 bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">
+                    <!-- se recupera de js -->
                 </div>
                 <h3 class="text-xl font-bold text-white mb-2">Web Corporativa</h3>
                 <p class="text-gray-400 text-sm mb-6">
@@ -195,16 +193,16 @@
                 </p>
 
                 <div class="mb-6">
-                    <div class="text-gray-500 line-through text-lg font-medium">
-                        S/ 1300
+                    <div class="original-price text-gray-500 line-through text-lg font-medium">
+                        <!-- se recupera de js -->
                     </div>
                     <div class="flex items-baseline gap-1">
                         <span class="text-xl text-yellow-400">S/</span>
-                        <span class="text-5xl font-bold text-white">650</span>
+                        <span class="final-price text-5xl font-bold text-white">650</span>
                     </div>
-                    <div class="text-xs text-green-400 font-bold mt-2">
+                    <!-- <div class="text-xs text-green-400 font-bold mt-2">
                         + Hosting Gratis 1 año
-                    </div>
+                    </div> -->
                 </div>
 
                 <ul class="space-y-4 mb-8 flex-1">
